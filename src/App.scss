@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* fixes dropdownlist in dialog issue */
+.k-animation-container {
+  z-index: 10003;
+}
+.k-dialog-wrapper {
+  z-index: 10003;
+}
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import "./styles/main.scss";
+// @import "./pages/Login/Login.css";

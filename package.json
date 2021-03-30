@@ -1,83 +1,79 @@
 {
-  "name": "@coreui/coreui-free-react-admin-template",
-  "version": "3.2.0",
-  "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
-  "author": {
-    "name": "CoreUI",
-    "url": "https://coreui.io",
-    "github": "https://github.com/coreui",
-    "twitter": "https://twitter.com/core_ui"
-  },
-  "contributors": [
-    {
-      "name": "CoreUI Team",
-      "url": "https://github.com/orgs/coreui/people"
-    }
-  ],
-  "homepage": ".",
-  "copyright": "Copyright 2017-2020 creativeLabs Łukasz Holeczek",
-  "license": "MIT",
+  "name": "coffee-warehouse",
+  "version": "0.1.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
-  },
+  "homepage": "http://telerik.github.io/react-coffee-warehouse",
   "dependencies": {
-    "@coreui/chartjs": "^2.0.0",
-    "@coreui/coreui": "^3.4.0",
-    "@coreui/icons": "^2.0.0-rc.0",
-    "@coreui/icons-react": "^1.0.2",
-    "@coreui/react": "^3.4.0",
-    "@coreui/react-chartjs": "^1.0.1",
-    "@coreui/utils": "^1.3.1",
-    "classnames": "^2.2.6",
-    "core-js": "^3.8.1",
-    "enzyme": "^3.11.0",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.3.2",
-    "node-sass": "^4.14.1",
-    "prop-types": "^15.7.2",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@progress/kendo-data-query": "^1.5.3",
+    "@progress/kendo-date-math": "^1.5.0",
+    "@progress/kendo-drawing": "^1.6.0",
+    "@progress/kendo-licensing": "^1.1.3",
+    "@progress/kendo-react-buttons": "^4.3.0",
+    "@progress/kendo-react-charts": "^4.3.0",
+    "@progress/kendo-react-common": "^4.5.0",
+    "@progress/kendo-react-data-tools": "^4.3.0",
+    "@progress/kendo-react-dateinputs": "^4.3.0",
+    "@progress/kendo-react-dialogs": "^4.3.0",
+    "@progress/kendo-react-dropdowns": "^4.3.0",
+    "@progress/kendo-react-editor": "^4.3.0",
+    "@progress/kendo-react-excel-export": "^4.3.0",
+    "@progress/kendo-react-form": "^4.3.0",
+    "@progress/kendo-react-grid": "^4.3.0",
+    "@progress/kendo-react-inputs": "^4.3.0",
+    "@progress/kendo-react-intl": "^4.3.0",
+    "@progress/kendo-react-layout": "^4.3.0",
+    "@progress/kendo-react-pdf": "^4.3.0",
+    "@progress/kendo-react-progressbars": "^4.3.0",
+    "@progress/kendo-react-scheduler": "^4.3.0",
+    "@progress/kendo-react-treeview": "^4.3.0",
+    "@progress/kendo-react-upload": "^4.3.0",
+    "@progress/kendo-svg-icons": "^0.1.2",
+    "@progress/kendo-theme-default": "^4.32.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "cldr-core": "36.0.0",
+    "cldr-dates-full": "^36.0.0",
+    "cldr-numbers-full": "^36.0.0",
+    "hammerjs": "^2.0.8",
+    "node-sass": "^4.13.1",
+    "query-string": "^7.0.0",
     "react": "^17.0.1",
-    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.1",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "redux": "4.0.5"
-  },
-  "devDependencies": {
-    "auto-changelog": "~2.2.1",
-    "react-scripts": "^4.0.1"
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "styled-components": "^5.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:cov": "npm test -- --coverage --watchAll=false",
-    "test:debug": "react-scripts --inspect-brk test --runInBand",
     "eject": "react-scripts eject",
-    "changelog": "auto-changelog --starting-version 3.0.0 --commit-limit false --hide-credit"
-  },
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 10",
-    "not op_mini all"
-  ],
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!**/*index.js",
-      "!src/serviceWorker.js",
-      "!src/polyfill.js"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
-  "engines": {
-    "node": ">=10",
-    "npm": ">=6"
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
