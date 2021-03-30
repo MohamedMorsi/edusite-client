@@ -29,15 +29,15 @@ const items = [
   },
   { name: "planning", iconSvg: "k-icon planning-icon", route: "/planning" },
   { name: "profile", iconSvg: "k-icon profile-icon", route: "/profile" },
+  // { separator: true },
   { separator: true },
-  { name: "info", iconSvg: "k-icon info-icon", route: "/info" },
+  // { name: "info", iconSvg: "k-icon info-icon", route: "/info" },
   {
     name: "dashboard",
     iconSvg: "k-icon dashboard-icon",
     selected: true,
     route: "/admin/dashboard",
   },
-  { separator: true },
   {
     name: "users",
     iconSvg: "fas fa-users",
@@ -52,6 +52,26 @@ const items = [
     name: "services",
     iconSvg: "fas fa-taxi",
     route: "/admin/services",
+  },
+  {
+    name: "teachers",
+    iconSvg: "fas fa-taxi",
+    route: "/admin/teachers",
+  },
+  {
+    name: "students",
+    iconSvg: "fas fa-taxi",
+    route: "/admin/students",
+  },
+  {
+    name: "grades",
+    iconSvg: "fas fa-taxi",
+    route: "/admin/grades",
+  },
+  {
+    name: "courses",
+    iconSvg: "fas fa-taxi",
+    route: "/admin/courses",
   },
 
   // { separator: true },

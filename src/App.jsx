@@ -119,7 +119,7 @@ const App = () => {
                     path="/profile"
                     component={AdminContainer}
                   />
-                  <Route exact={true} path="/info" component={AdminContainer} />
+                  {/* <Route exact={true} path="/info" component={AdminContainer} /> */}
 
                   {/*   -------------------Admin start-------------------------*/}
                   <Route
@@ -142,12 +142,34 @@ const App = () => {
                     path="/admin/services"
                     component={AdminContainer}
                   />
+
+                  <Route
+                    exact={true}
+                    path="/admin/teachers"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/students"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/grades"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/courses"
+                    component={AdminContainer}
+                  />
+
                   <Redirect from="/admin" to="/admin/dashboard" />
                   {/*   -------------------Admin end -------------------------*/}
 
                   <Route path="/login" exact={true} component={Login} />
                   <Route path="/notfound" exact={true} component={NotFound} />
-                  <Redirect from="/" to="/login" />
+                  {/* <Redirect from="/" to="/login" /> */}
                   <Redirect to="/notfound" />
                 </Switch>
               </BrowserRouter>

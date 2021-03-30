@@ -66,6 +66,10 @@ export const enMessages = {
     reports: "Reports",
 
     services: "Services",
+    teachers: "Teachers",
+    students: "Students",
+    grades: "Grades",
+    courses: "Courses",
     users: "Users",
     tenants: "Tenants",
   },
