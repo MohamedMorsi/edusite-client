@@ -31,7 +31,7 @@ class Login extends Component {
 
     // if (res.roles[0] === "Admin") {
     //   console.log(res.roles[0]);
-    this.props.history.replace("/admin/dashboard");
+    this.props.history.replace("/admin/categories");
     // } else {
     //   this.props.history.replace("/login");
     // }

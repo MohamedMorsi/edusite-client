@@ -22,6 +22,12 @@ import {
 
 const items = [
   {
+    name: "categories",
+    iconSvg: "fas fa-store",
+    route: "/admin/categories",
+  },
+  { separator: true },
+  {
     name: "dashboard",
     iconSvg: "k-icon dashboard-icon",
     selected: true,
@@ -30,49 +36,49 @@ const items = [
   { name: "planning", iconSvg: "k-icon planning-icon", route: "/planning" },
   { name: "profile", iconSvg: "k-icon profile-icon", route: "/profile" },
   // { separator: true },
-  { separator: true },
+
   // { name: "info", iconSvg: "k-icon info-icon", route: "/info" },
-  {
-    name: "dashboard",
-    iconSvg: "k-icon dashboard-icon",
-    selected: true,
-    route: "/admin/dashboard",
-  },
-  {
-    name: "users",
-    iconSvg: "fas fa-users",
-    route: "/admin/users",
-  },
-  {
-    name: "tenants",
-    iconSvg: "fas fa-store",
-    route: "/admin/tenants",
-  },
-  {
-    name: "services",
-    iconSvg: "fas fa-taxi",
-    route: "/admin/services",
-  },
-  {
-    name: "teachers",
-    iconSvg: "fas fa-taxi",
-    route: "/admin/teachers",
-  },
-  {
-    name: "students",
-    iconSvg: "fas fa-taxi",
-    route: "/admin/students",
-  },
-  {
-    name: "grades",
-    iconSvg: "fas fa-taxi",
-    route: "/admin/grades",
-  },
-  {
-    name: "courses",
-    iconSvg: "fas fa-taxi",
-    route: "/admin/courses",
-  },
+  // {
+  //   name: "dashboard",
+  //   iconSvg: "k-icon dashboard-icon",
+  //   selected: true,
+  //   route: "/admin/dashboard",
+  // },
+  // {
+  //   name: "users",
+  //   iconSvg: "fas fa-users",
+  //   route: "/admin/users",
+  // },
+  // {
+  //   name: "tenants",
+  //   iconSvg: "fas fa-store",
+  //   route: "/admin/tenants",
+  // },
+  // {
+  //   name: "services",
+  //   iconSvg: "fas fa-taxi",
+  //   route: "/admin/services",
+  // },
+  // {
+  //   name: "teachers",
+  //   iconSvg: "fas fa-taxi",
+  //   route: "/admin/teachers",
+  // },
+  // {
+  //   name: "students",
+  //   iconSvg: "fas fa-taxi",
+  //   route: "/admin/students",
+  // },
+  // {
+  //   name: "grades",
+  //   iconSvg: "fas fa-taxi",
+  //   route: "/admin/grades",
+  // },
+  // {
+  //   name: "courses",
+  //   iconSvg: "fas fa-taxi",
+  //   route: "/admin/courses",
+  // },
 
   // { separator: true },
   // { name: "clients", iconSvg: "fas fa-users", route: "/tenant/clients" },

@@ -12,7 +12,6 @@ import {
 import Dashboard from "./pages/Dashboard.jsx";
 import Planning from "./pages/Planning.jsx";
 import Profile from "./pages/Profile.jsx";
-import Info from "./pages/Info.jsx";
 import DrawerRouterContainer from "./components/DrawerRouterContainer.jsx";
 import { AppContext } from "./AppContext";
 import { countries } from "./resources/countries";
@@ -108,6 +107,13 @@ const App = () => {
             <HashRouter>
               <BrowserRouter>
                 <Switch>
+                  {/*   -------------------Admin start-------------------------*/}
+                  <Route
+                    exact={true}
+                    path="/admin/categories"
+                    component={AdminContainer}
+                  />
+
                   <Route exact={true} path="/" component={AdminContainer} />
                   <Route
                     exact={true}
@@ -119,57 +125,11 @@ const App = () => {
                     path="/profile"
                     component={AdminContainer}
                   />
-                  {/* <Route exact={true} path="/info" component={AdminContainer} /> */}
-
-                  {/*   -------------------Admin start-------------------------*/}
-                  <Route
-                    exact={true}
-                    path="/admin/dashboard"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/users"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/tenants"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/services"
-                    component={AdminContainer}
-                  />
-
-                  <Route
-                    exact={true}
-                    path="/admin/teachers"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/students"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/grades"
-                    component={AdminContainer}
-                  />
-                  <Route
-                    exact={true}
-                    path="/admin/courses"
-                    component={AdminContainer}
-                  />
-
-                  <Redirect from="/admin" to="/admin/dashboard" />
                   {/*   -------------------Admin end -------------------------*/}
 
                   <Route path="/login" exact={true} component={Login} />
                   <Route path="/notfound" exact={true} component={NotFound} />
-                  {/* <Redirect from="/" to="/login" /> */}
+                  <Redirect from="/" to="/login" />
                   <Redirect to="/notfound" />
                 </Switch>
               </BrowserRouter>

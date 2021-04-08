@@ -27,7 +27,7 @@ const dataState = {
   skip: 0,
 };
 
-class AdminTenants extends React.Component {
+class AdminCategories extends React.Component {
   _export;
   export = () => {
     this._export.save();
@@ -45,10 +45,10 @@ class AdminTenants extends React.Component {
   };
 
   async componentDidMount() {
-    const promise = await GetAllTenants();
-    promise == undefined
-      ? this.setState({ data: [] })
-      : this.setState({ data: promise.data });
+    // const promise = await GetAllTenants();
+    // promise == undefined
+    //   ? this.setState({ data: [] })
+    //   : this.setState({ data: promise.data });
   }
 
   toggleAreYousuredialogDialog = (item) => {
@@ -73,18 +73,18 @@ class AdminTenants extends React.Component {
       console.log("deleted", this.state.selectedTodelete);
       const res = await DeleteTenant(this.state.selectedTodelete.tenantId);
     }
-    const { data } = await GetAllTenants();
-    this.setState({
-      data: data,
-    });
+    // const { data } = await GetAllTenants();
+    // this.setState({
+    //   data: data,
+    // });
   };
 
   handleSubmitEdit = async (event) => {
     console.log(event);
-    const res = await UpdateTenant(event.tenantId, event);
-    const { data } = await GetAllTenants();
+    // const res = await UpdateTenant(event.tenantId, event);
+    // const { data } = await GetAllTenants();
     this.setState({
-      data: data,
+      //data: data,
       openFormEdit: false,
     });
   };
@@ -92,9 +92,12 @@ class AdminTenants extends React.Component {
   handleSubmitAdd = async (event) => {
     //TODO : ADDTenantIamge
     console.log(event);
-    const res = await CreateTenant(event);
-    const { data } = await GetAllTenants();
-    this.setState({ data: data, openFormAdd: false });
+    // const res = await CreateTenant(event);
+    // const { data } = await GetAllTenants();
+    this.setState({
+      // data: data,
+      openFormAdd: false,
+    });
   };
 
   handleCancelEdit = () => {
@@ -117,7 +120,7 @@ class AdminTenants extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"tenants"} />
+        <TenantTitles title={"categories"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -206,4 +209,4 @@ class AdminTenants extends React.Component {
     );
   }
 }
-export default AdminTenants;
+export default AdminCategories;

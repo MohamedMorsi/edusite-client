@@ -44,6 +44,8 @@ export const enMessages = {
     exportExcel: "Export to Excel",
     exportPdf: "Export to PDF",
 
+    categories: "Categories",
+
     rms: "RMS",
     workorders: "Workorders",
     barcodebatchs: "Barcode batchs",
