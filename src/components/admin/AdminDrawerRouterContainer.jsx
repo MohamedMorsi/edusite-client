@@ -27,6 +27,11 @@ const items = [
     route: "/admin/categories",
   },
   {
+    name: "plans",
+    iconSvg: "fas fa-hotel",
+    route: "/admin/plans",
+  },
+  {
     name: "courses",
     iconSvg: "fas fa-chalkboard",
     route: "/admin/courses",

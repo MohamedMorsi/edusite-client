@@ -115,6 +115,11 @@ const App = () => {
                   />
                   <Route
                     exact={true}
+                    path="/admin/plans"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
                     path="/admin/courses"
                     component={AdminContainer}
                   />

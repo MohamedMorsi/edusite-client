@@ -17,6 +17,7 @@ import AdminCourses from "./AdminCourses";
 import AdminGrades from "./AdminGrades";
 import AdminTeachers from "./AdminTeachers";
 import AdminStudents from "./AdminStudents";
+import Adminplans from "./Adminplans";
 
 class AdminContainer extends Component {
   state = {};
@@ -29,6 +30,7 @@ class AdminContainer extends Component {
             path="/admin/categories"
             component={AdminCategories}
           />
+          <Route exact={true} path="/admin/plans" component={Adminplans} />
           <Route exact={true} path="/admin/courses" component={AdminCourses} />
           <Route exact={true} path="/admin/grades" component={AdminGrades} />
           <Route
