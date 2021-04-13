@@ -113,6 +113,26 @@ const App = () => {
                     path="/admin/categories"
                     component={AdminContainer}
                   />
+                  <Route
+                    exact={true}
+                    path="/admin/courses"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/grades"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/teachers"
+                    component={AdminContainer}
+                  />
+                  <Route
+                    exact={true}
+                    path="/admin/students"
+                    component={AdminContainer}
+                  />
 
                   <Route exact={true} path="/" component={AdminContainer} />
                   <Route

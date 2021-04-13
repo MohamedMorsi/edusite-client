@@ -47,7 +47,7 @@ export const Header = (props) => {
         </div>
 
         <div className="title">
-          <h1>{localizationService.toLanguageString("custom.rms")}</h1>
+          <h1>{localizationService.toLanguageString("custom.edusite")}</h1>
           <span className="vl"></span>
           <h2>{page}</h2>
         </div>

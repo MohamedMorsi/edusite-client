@@ -23,8 +23,28 @@ import {
 const items = [
   {
     name: "categories",
-    iconSvg: "fas fa-store",
+    iconSvg: "fas fa-school",
     route: "/admin/categories",
+  },
+  {
+    name: "courses",
+    iconSvg: "fas fa-chalkboard",
+    route: "/admin/courses",
+  },
+  {
+    name: "grades",
+    iconSvg: "fas fa-graduation-cap",
+    route: "/admin/grades",
+  },
+  {
+    name: "teachers",
+    iconSvg: "fas fa-chalkboard-teacher",
+    route: "/admin/teachers",
+  },
+  {
+    name: "students",
+    iconSvg: "fas fa-user-graduate",
+    route: "/admin/students",
   },
   { separator: true },
   {

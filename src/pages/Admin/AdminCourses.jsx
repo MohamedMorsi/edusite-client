@@ -9,7 +9,7 @@ import {
 import TenantTitles from "./AdminTitles";
 import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
 import EditCommandCell from "../../components/EditCommandCell";
-import ActiveAndDisableCommandCell from "./../../components/ActiveAndDisableCommandCell";
+import ActiveAndDisableCommandCell from "../../components/ActiveAndDisableCommandCell";
 import {
   GetAllTenants,
   CreateTenant,
@@ -23,7 +23,7 @@ const dataState = {
   skip: 0,
 };
 
-class AdminCategories extends React.Component {
+class AdminCourses extends React.Component {
   _export;
   export = () => {
     this._export.save();
@@ -44,22 +44,35 @@ class AdminCategories extends React.Component {
     const data = [
       {
         id: 1,
-        categoryName: "languages",
+        courseName: "Math II",
+        categoryId: 3,
+        category: {
+          id: 3,
+          categoryName: "secondry Education",
+          isActive: true,
+        },
         isActive: true,
       },
       {
         id: 2,
-        categoryName: "engineering",
+        courseName: "English",
+        categoryId: 1,
+        category: {
+          id: 1,
+          categoryName: "languages",
+          isActive: true,
+        },
         isActive: true,
       },
       {
         id: 3,
-        categoryName: "secondry Education",
-        isActive: true,
-      },
-      {
-        id: 4,
-        categoryName: "Graphic Design",
+        courseName: "Math III",
+        categoryId: 3,
+        category: {
+          id: 3,
+          categoryName: "secondry Education",
+          isActive: true,
+        },
         isActive: true,
       },
     ];
@@ -151,7 +164,7 @@ class AdminCategories extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"categories"} />
+        <TenantTitles title={"courses"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -205,7 +218,8 @@ class AdminCategories extends React.Component {
               locked={true}
               filterable={false}
             />
-            <Column field="categoryName" title="Category Name" />
+            <Column field="courseName" title="Course Name" />
+            <Column field="category.categoryName" title="Category" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
@@ -232,4 +246,4 @@ class AdminCategories extends React.Component {
     );
   }
 }
-export default AdminCategories;
+export default AdminCourses;

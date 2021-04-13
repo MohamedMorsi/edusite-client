@@ -9,7 +9,7 @@ import {
 import TenantTitles from "./AdminTitles";
 import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
 import EditCommandCell from "../../components/EditCommandCell";
-import ActiveAndDisableCommandCell from "./../../components/ActiveAndDisableCommandCell";
+import ActiveAndDisableCommandCell from "../../components/ActiveAndDisableCommandCell";
 import {
   GetAllTenants,
   CreateTenant,
@@ -23,7 +23,7 @@ const dataState = {
   skip: 0,
 };
 
-class AdminCategories extends React.Component {
+class AdminTeachers extends React.Component {
   _export;
   export = () => {
     this._export.save();
@@ -44,23 +44,21 @@ class AdminCategories extends React.Component {
     const data = [
       {
         id: 1,
-        categoryName: "languages",
+        teacherName: "Mohamed Osamma",
         isActive: true,
+        coursesNums: 1,
       },
       {
         id: 2,
-        categoryName: "engineering",
+        teacherName: "shrief Tayel",
         isActive: true,
+        coursesNums: 3,
       },
       {
         id: 3,
-        categoryName: "secondry Education",
+        teacherName: "Marsail Gorege",
         isActive: true,
-      },
-      {
-        id: 4,
-        categoryName: "Graphic Design",
-        isActive: true,
+        coursesNums: 1,
       },
     ];
     this.setState({ data: data });
@@ -151,7 +149,7 @@ class AdminCategories extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"categories"} />
+        <TenantTitles title={"teachers"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -205,7 +203,8 @@ class AdminCategories extends React.Component {
               locked={true}
               filterable={false}
             />
-            <Column field="categoryName" title="Category Name" />
+            <Column field="teacherName" title="Teacher Name" />
+            <Column field="coursesNums" title="Courses Numbers" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
@@ -232,4 +231,4 @@ class AdminCategories extends React.Component {
     );
   }
 }
-export default AdminCategories;
+export default AdminTeachers;

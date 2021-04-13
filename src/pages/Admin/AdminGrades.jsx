@@ -9,7 +9,7 @@ import {
 import TenantTitles from "./AdminTitles";
 import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
 import EditCommandCell from "../../components/EditCommandCell";
-import ActiveAndDisableCommandCell from "./../../components/ActiveAndDisableCommandCell";
+import ActiveAndDisableCommandCell from "../../components/ActiveAndDisableCommandCell";
 import {
   GetAllTenants,
   CreateTenant,
@@ -23,7 +23,7 @@ const dataState = {
   skip: 0,
 };
 
-class AdminCategories extends React.Component {
+class AdminGrades extends React.Component {
   _export;
   export = () => {
     this._export.save();
@@ -44,22 +44,14 @@ class AdminCategories extends React.Component {
     const data = [
       {
         id: 1,
-        categoryName: "languages",
+        GradeName: "Grade One",
+        CoursesNums: 5,
         isActive: true,
       },
       {
         id: 2,
-        categoryName: "engineering",
-        isActive: true,
-      },
-      {
-        id: 3,
-        categoryName: "secondry Education",
-        isActive: true,
-      },
-      {
-        id: 4,
-        categoryName: "Graphic Design",
+        GradeName: "Grade two",
+        CoursesNums: 3,
         isActive: true,
       },
     ];
@@ -151,7 +143,7 @@ class AdminCategories extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"categories"} />
+        <TenantTitles title={"grades"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -205,7 +197,8 @@ class AdminCategories extends React.Component {
               locked={true}
               filterable={false}
             />
-            <Column field="categoryName" title="Category Name" />
+            <Column field="GradeName" title="Grade Name" />
+            <Column field="CoursesNums" title="Courses Numbers" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
@@ -232,4 +225,4 @@ class AdminCategories extends React.Component {
     );
   }
 }
-export default AdminCategories;
+export default AdminGrades;
