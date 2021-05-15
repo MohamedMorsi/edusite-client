@@ -32,14 +32,14 @@ const items = [
     route: "/admin/plans",
   },
   {
-    name: "courses",
-    iconSvg: "fas fa-chalkboard",
-    route: "/admin/courses",
-  },
-  {
     name: "grades",
     iconSvg: "fas fa-graduation-cap",
     route: "/admin/grades",
+  },
+  {
+    name: "courses",
+    iconSvg: "fas fa-chalkboard",
+    route: "/admin/courses",
   },
   {
     name: "teachers",

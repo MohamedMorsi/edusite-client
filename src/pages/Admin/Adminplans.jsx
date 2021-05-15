@@ -6,15 +6,15 @@ import {
   GridColumn as Column,
   GridToolbar,
 } from "@progress/kendo-react-grid";
-import TenantTitles from "./AdminTitles";
-import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
+import AdminTitles from "./AdminTitles";
+import AddOrEditPlanForm from "../../components/admin/AddOrEditPlanForm";
 import EditCommandCell from "../../components/EditCommandCell";
 import ActiveAndDisableCommandCell from "../../components/ActiveAndDisableCommandCell";
 import {
-  GetAllTenants,
-  CreateTenant,
-  UpdateTenant,
-  DeleteTenant,
+  GetAllPlans,
+  CreatePlan,
+  UpdatePlan,
+  DeletePlan,
 } from "../../api/adminApi.js";
 
 const dataState = {
@@ -41,40 +41,40 @@ class Adminplans extends React.Component {
   };
 
   async componentDidMount() {
-    const data = [
-      {
-        id: 1,
-        planName: "annual",
-        months: 12,
-        cost: 10000,
-        maxCoursesNumbers: 6,
-        maxStudentsNumber: 500,
-        isActive: true,
-      },
-      {
-        id: 2,
-        planName: "midterm",
-        months: 6,
-        cost: 5000,
-        maxCoursesNumbers: 6,
-        maxStudentsNumber: 300,
-        isActive: true,
-      },
-      {
-        id: 3,
-        planName: "quarterly",
-        months: 3,
-        cost: 2500,
-        maxCoursesNumbers: 6,
-        maxStudentsNumber: 100,
-        isActive: true,
-      },
-    ];
-    this.setState({ data: data });
-    // const promise = await GetAllTenants();
-    // promise == undefined
-    //   ? this.setState({ data: [] })
-    //   : this.setState({ data: promise.data });
+    // const data = [
+    //   {
+    //     id: 1,
+    //     planName: "annual",
+    //     months: 12,
+    //     cost: 10000,
+    //     maxCoursesNumbers: 6,
+    //     maxStudentsNumber: 500,
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 2,
+    //     planName: "midterm",
+    //     months: 6,
+    //     cost: 5000,
+    //     maxCoursesNumbers: 6,
+    //     maxStudentsNumber: 300,
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 3,
+    //     planName: "quarterly",
+    //     months: 3,
+    //     cost: 2500,
+    //     maxCoursesNumbers: 6,
+    //     maxStudentsNumber: 100,
+    //     isActive: true,
+    //   },
+    // ];
+    // this.setState({ data: data });
+    const promise = await GetAllPlans();
+    promise == undefined
+      ? this.setState({ data: [] })
+      : this.setState({ data: promise.data });
   }
 
   toggleAreYousuredialogDialog = (item) => {
@@ -96,40 +96,42 @@ class Adminplans extends React.Component {
   remove = async (item) => {
     if (this.state.selectedTodelete !== {}) {
       console.log("deleted", this.state.selectedTodelete);
-      //const res = await DeleteTenant(this.state.selectedTodelete.tenantId);
+      const res = await DeletePlan(this.state.selectedTodelete.id);
     }
-    // const { data } = await GetAllTenants();
-    // this.setState({
-    //   data: data,
-    // });
+    const { data } = await GetAllPlans();
+    this.setState({
+      data: data,
+    });
   };
 
   handleSubmitEdit = async (event) => {
     console.log(event);
-    // const res = await UpdateTenant(event.tenantId, event);
-    // const { data } = await GetAllTenants();
+    const res = await UpdatePlan(event.id, event);
+    const { data } = await GetAllPlans();
     this.setState({
-      //data: data,
+      data: data,
       openFormEdit: false,
     });
   };
 
   handleSubmitAdd = async (event) => {
     console.log(event);
-    // const res = await CreateTenant(event);
-    // const { data } = await GetAllTenants();
+    const res = await CreatePlan(event);
+    const { data } = await GetAllPlans();
     this.setState({
-      // data: data,
+      data: data,
       openFormAdd: false,
     });
   };
 
   ActiveAndDisable = async (item) => {
-    if (item.isActive === true) {
-      //const res = await OpenBox(item.id);
-    } else {
-      //const res = await CloseBox(item.id);
-    }
+    console.log(item);
+    item.isActive = item.isActive === true ? false : true;
+    const res = await UpdatePlan(item.id, item);
+    const { data } = await GetAllPlans();
+    this.setState({
+      data: data,
+    });
   };
 
   toggleSwitch = (item) => {
@@ -158,7 +160,7 @@ class Adminplans extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"plans"} />
+        <AdminTitles title={"plans"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -186,7 +188,7 @@ class Adminplans extends React.Component {
           >
             <GridToolbar>
               <button
-                title={"Add New Category"}
+                title={"Add New Plan"}
                 className="k-button k-primary"
                 onClick={() => {
                   this.setState({ openFormAdd: true });
@@ -196,11 +198,11 @@ class Adminplans extends React.Component {
               </button>
 
               {this.state.openFormAdd && (
-                <AddOrEditTenantForm
+                <AddOrEditPlanForm
                   cancelEdit={this.handleCancelAdd}
                   onSubmit={this.handleSubmitAdd}
                   item={{}}
-                  title={"Add New Category"}
+                  title={"Add New Plan"}
                 />
               )}
             </GridToolbar>
@@ -213,10 +215,9 @@ class Adminplans extends React.Component {
               filterable={false}
             />
             <Column field="planName" title="Name" />
-            <Column field="cost" title="cost" />
-            <Column field="maxCoursesNumbers" title="max #Courses" />
-            <Column field="maxStudentsNumber" title="max #Students" />
-            <Column field="months" title="#months" />
+            <Column field="cost" title="Cost" />
+            <Column field="maxStudents" title="Max #Students" />
+            <Column field="monthsNumber" title="Max #months" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
@@ -231,11 +232,11 @@ class Adminplans extends React.Component {
             />
           </Grid>
           {this.state.openFormEdit && (
-            <AddOrEditTenantForm
+            <AddOrEditPlanForm
               cancelEdit={this.handleCancelEdit}
               onSubmit={this.handleSubmitEdit}
               item={this.state.editItem}
-              title={"Edit Category"}
+              title={"Edit Plan"}
             />
           )}
         </div>

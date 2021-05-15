@@ -6,15 +6,15 @@ import {
   GridColumn as Column,
   GridToolbar,
 } from "@progress/kendo-react-grid";
-import TenantTitles from "./AdminTitles";
-import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
+import AdminTitles from "./AdminTitles";
+import AddOrEditCategoryForm from "../../components/admin/AddOrEditCategoryForm";
 import EditCommandCell from "../../components/EditCommandCell";
 import ActiveAndDisableCommandCell from "./../../components/ActiveAndDisableCommandCell";
 import {
-  GetAllTenants,
-  CreateTenant,
-  UpdateTenant,
-  DeleteTenant,
+  GetAllCategories,
+  CreateCategory,
+  UpdateCategory,
+  DeleteCategory,
 } from "../../api/adminApi.js";
 
 const dataState = {
@@ -41,39 +41,38 @@ class AdminCategories extends React.Component {
   };
 
   async componentDidMount() {
-    const data = [
-      {
-        id: 1,
-        categoryName: "languages",
-        isActive: true,
-      },
-      {
-        id: 2,
-        categoryName: "engineering",
-        isActive: true,
-      },
-      {
-        id: 3,
-        categoryName: "secondry Education",
-        isActive: true,
-      },
-      {
-        id: 4,
-        categoryName: "Graphic Design",
-        isActive: true,
-      },
-    ];
-    this.setState({ data: data });
-    // const promise = await GetAllTenants();
-    // promise == undefined
-    //   ? this.setState({ data: [] })
-    //   : this.setState({ data: promise.data });
+    // const data = [
+    //   {
+    //     id: 1,
+    //     categoryName: "languages",
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 2,
+    //     categoryName: "engineering",
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 3,
+    //     categoryName: "secondry Education",
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 4,
+    //     categoryName: "Graphic Design",
+    //     isActive: true,
+    //   },
+    // ];
+    //this.setState({ data: data });
+    const promise = await GetAllCategories();
+    promise == undefined
+      ? this.setState({ data: [] })
+      : this.setState({ data: promise.data });
   }
 
   toggleAreYousuredialogDialog = (item) => {
     this.setState({
       AreYousuredialog: !this.state.AreYousuredialog,
-
       selectedTodelete: item,
     });
   };
@@ -89,40 +88,42 @@ class AdminCategories extends React.Component {
   remove = async (item) => {
     if (this.state.selectedTodelete !== {}) {
       console.log("deleted", this.state.selectedTodelete);
-      //const res = await DeleteTenant(this.state.selectedTodelete.tenantId);
+      const res = await DeleteCategory(this.state.selectedTodelete.id);
     }
-    // const { data } = await GetAllTenants();
-    // this.setState({
-    //   data: data,
-    // });
+    const { data } = await GetAllCategories();
+    this.setState({
+      data: data,
+    });
   };
 
   handleSubmitEdit = async (event) => {
     console.log(event);
-    // const res = await UpdateTenant(event.tenantId, event);
-    // const { data } = await GetAllTenants();
+    const res = await UpdateCategory(event.id, event);
+    const { data } = await GetAllCategories();
     this.setState({
-      //data: data,
+      data: data,
       openFormEdit: false,
     });
   };
 
   handleSubmitAdd = async (event) => {
     console.log(event);
-    // const res = await CreateTenant(event);
-    // const { data } = await GetAllTenants();
+    const res = await CreateCategory(event);
+    const { data } = await GetAllCategories();
     this.setState({
-      // data: data,
+      data: data,
       openFormAdd: false,
     });
   };
 
   ActiveAndDisable = async (item) => {
-    if (item.isActive === true) {
-      //const res = await OpenBox(item.id);
-    } else {
-      //const res = await CloseBox(item.id);
-    }
+    console.log(item);
+    item.isActive = item.isActive === true ? false : true;
+    const res = await UpdateCategory(item.id, item);
+    const { data } = await GetAllCategories();
+    this.setState({
+      data: data,
+    });
   };
 
   toggleSwitch = (item) => {
@@ -151,7 +152,7 @@ class AdminCategories extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"categories"} />
+        <AdminTitles title={"categories"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -189,7 +190,7 @@ class AdminCategories extends React.Component {
               </button>
 
               {this.state.openFormAdd && (
-                <AddOrEditTenantForm
+                <AddOrEditCategoryForm
                   cancelEdit={this.handleCancelAdd}
                   onSubmit={this.handleSubmitAdd}
                   item={{}}
@@ -220,7 +221,7 @@ class AdminCategories extends React.Component {
             />
           </Grid>
           {this.state.openFormEdit && (
-            <AddOrEditTenantForm
+            <AddOrEditCategoryForm
               cancelEdit={this.handleCancelEdit}
               onSubmit={this.handleSubmitEdit}
               item={this.state.editItem}

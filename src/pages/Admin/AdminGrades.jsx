@@ -6,15 +6,15 @@ import {
   GridColumn as Column,
   GridToolbar,
 } from "@progress/kendo-react-grid";
-import TenantTitles from "./AdminTitles";
-import AddOrEditTenantForm from "../../components/admin/AddOrEditTenantForm";
+import AdminTitles from "./AdminTitles";
+import AddOrEditGradeForm from "../../components/admin/AddOrEditGradeForm";
 import EditCommandCell from "../../components/EditCommandCell";
 import ActiveAndDisableCommandCell from "../../components/ActiveAndDisableCommandCell";
 import {
-  GetAllTenants,
-  CreateTenant,
-  UpdateTenant,
-  DeleteTenant,
+  GetAllGrades,
+  CreateGrade,
+  UpdateGrade,
+  DeleteGrade,
 } from "../../api/adminApi.js";
 
 const dataState = {
@@ -41,25 +41,25 @@ class AdminGrades extends React.Component {
   };
 
   async componentDidMount() {
-    const data = [
-      {
-        id: 1,
-        GradeName: "Grade One",
-        CoursesNums: 5,
-        isActive: true,
-      },
-      {
-        id: 2,
-        GradeName: "Grade two",
-        CoursesNums: 3,
-        isActive: true,
-      },
-    ];
-    this.setState({ data: data });
-    // const promise = await GetAllTenants();
-    // promise == undefined
-    //   ? this.setState({ data: [] })
-    //   : this.setState({ data: promise.data });
+    // const data = [
+    //   {
+    //     id: 1,
+    //     GradeName: "Grade One",
+    //     CoursesNums: 5,
+    //     isActive: true,
+    //   },
+    //   {
+    //     id: 2,
+    //     GradeName: "Grade two",
+    //     CoursesNums: 3,
+    //     isActive: true,
+    //   },
+    // ];
+    // this.setState({ data: data });
+    const promise = await GetAllGrades();
+    promise == undefined
+      ? this.setState({ data: [] })
+      : this.setState({ data: promise.data });
   }
 
   toggleAreYousuredialogDialog = (item) => {
@@ -81,40 +81,42 @@ class AdminGrades extends React.Component {
   remove = async (item) => {
     if (this.state.selectedTodelete !== {}) {
       console.log("deleted", this.state.selectedTodelete);
-      //const res = await DeleteTenant(this.state.selectedTodelete.tenantId);
+      const res = await DeleteGrade(this.state.selectedTodelete.id);
     }
-    // const { data } = await GetAllTenants();
-    // this.setState({
-    //   data: data,
-    // });
+    const { data } = await GetAllGrades();
+    this.setState({
+      data: data,
+    });
   };
 
   handleSubmitEdit = async (event) => {
     console.log(event);
-    // const res = await UpdateTenant(event.tenantId, event);
-    // const { data } = await GetAllTenants();
+    const res = await UpdateGrade(event.id, event);
+    const { data } = await GetAllGrades();
     this.setState({
-      //data: data,
+      data: data,
       openFormEdit: false,
     });
   };
 
   handleSubmitAdd = async (event) => {
     console.log(event);
-    // const res = await CreateTenant(event);
-    // const { data } = await GetAllTenants();
+    const res = await CreateGrade(event);
+    const { data } = await GetAllGrades();
     this.setState({
-      // data: data,
+      data: data,
       openFormAdd: false,
     });
   };
 
   ActiveAndDisable = async (item) => {
-    if (item.isActive === true) {
-      //const res = await OpenBox(item.id);
-    } else {
-      //const res = await CloseBox(item.id);
-    }
+    console.log(item);
+    item.isActive = item.isActive === true ? false : true;
+    const res = await UpdateGrade(item.id, item);
+    const { data } = await GetAllGrades();
+    this.setState({
+      data: data,
+    });
   };
 
   toggleSwitch = (item) => {
@@ -143,7 +145,7 @@ class AdminGrades extends React.Component {
   render() {
     return (
       <CardContainer>
-        <TenantTitles title={"grades"} />
+        <AdminTitles title={"grades"} />
         <hr />
         <div className="card-component">
           <Grid
@@ -171,7 +173,7 @@ class AdminGrades extends React.Component {
           >
             <GridToolbar>
               <button
-                title={"Add New Category"}
+                title={"Add New Grade"}
                 className="k-button k-primary"
                 onClick={() => {
                   this.setState({ openFormAdd: true });
@@ -181,11 +183,11 @@ class AdminGrades extends React.Component {
               </button>
 
               {this.state.openFormAdd && (
-                <AddOrEditTenantForm
+                <AddOrEditGradeForm
                   cancelEdit={this.handleCancelAdd}
                   onSubmit={this.handleSubmitAdd}
                   item={{}}
-                  title={"Add New Category"}
+                  title={"Add New Grade"}
                 />
               )}
             </GridToolbar>
@@ -197,8 +199,8 @@ class AdminGrades extends React.Component {
               locked={true}
               filterable={false}
             />
-            <Column field="GradeName" title="Grade Name" />
-            <Column field="CoursesNums" title="Courses Numbers" />
+            <Column field="gradeName" title="Grade Name" />
+            <Column field="coursesCount" title="Courses count" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
@@ -213,11 +215,11 @@ class AdminGrades extends React.Component {
             />
           </Grid>
           {this.state.openFormEdit && (
-            <AddOrEditTenantForm
+            <AddOrEditGradeForm
               cancelEdit={this.handleCancelEdit}
               onSubmit={this.handleSubmitEdit}
               item={this.state.editItem}
-              title={"Edit Category"}
+              title={"Edit Grade"}
             />
           )}
         </div>

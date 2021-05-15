@@ -14,7 +14,7 @@ import axios from "axios";
 //   return config;
 // }
 
-const authapi = "https://localhost:44370/V4/api/";
+const authapi = "https://localhost:44370/api/";
 
 //Login
 export async function login(obj) {
@@ -103,14 +103,14 @@ export async function DeleteUser(Id) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Tenants
-export async function GetAllTenants() {
+//Grades
+export async function GetAllGrades() {
   try {
     const token = localStorage.getItem("token");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const promise = await axios.get(authapi + "Tenants/GetAllTenants", config);
+    const promise = await axios.get(authapi + "Grades/GetAllGrades", config);
     //console.log(promise);
     return promise;
   } catch (error) {
@@ -118,32 +118,31 @@ export async function GetAllTenants() {
   }
 }
 
-export async function GetAllActiveTenants() {
+export async function GetAllActiveGrades() {
   try {
     const token = localStorage.getItem("token");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const promise = await axios.get(
-      authapi + "Tenants/GetAllActiveTenants",
+      authapi + "Grades/GetAllActiveGrades",
       config
     );
     //console.log(promise);
-    return promise.data;
+    return promise;
   } catch (error) {
     console.error("can't get data : " + error);
-    return [];
   }
 }
 
-export async function CreateTenant(obj) {
+export async function CreateGrade(obj) {
   try {
     const token = localStorage.getItem("token");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const promise = await axios.post(
-      authapi + "Tenants/CreateTenant",
+      authapi + "Grades/CreateGrade",
       obj,
       config
     );
@@ -155,14 +154,14 @@ export async function CreateTenant(obj) {
   }
 }
 
-export async function UpdateTenant(Id, obj) {
+export async function UpdateGrade(Id, obj) {
   try {
     const token = localStorage.getItem("token");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const promise = await axios.put(
-      authapi + "Tenants/UpdateTenant/" + Id,
+      authapi + "Grades/UpdateGrade/" + Id,
       obj,
       config
     );
@@ -174,14 +173,14 @@ export async function UpdateTenant(Id, obj) {
   }
 }
 
-export async function DeleteTenant(Id) {
+export async function DeleteGrade(Id) {
   try {
     const token = localStorage.getItem("token");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const promise = await axios.delete(
-      authapi + "Tenants/DeleteTenant/" + Id,
+      authapi + "Grades/DeleteGrade/" + Id,
       config
     );
     //console.log(promise);
@@ -193,7 +192,77 @@ export async function DeleteTenant(Id) {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Courses
+export async function GetAllCourses() {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.get(authapi + "Courses/GetAllCourses", config);
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't get data : " + error);
+  }
+}
 
+export async function CreateCourse(obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.post(
+      authapi + "Courses/CreateCourse",
+      obj,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't add object : " + error);
+    return [];
+  }
+}
+
+export async function UpdateCourse(Id, obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.put(
+      authapi + "Courses/UpdateCourse/" + Id,
+      obj,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't update object : " + error);
+    return [];
+  }
+}
+
+export async function DeleteCourse(Id) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.delete(
+      authapi + "Courses/DeleteCourse/" + Id,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't delete object : " + error);
+    return [];
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////
 //Roles
 export async function GetAllRoles() {
   try {
@@ -209,3 +278,148 @@ export async function GetAllRoles() {
     return [];
   }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Categories
+export async function GetAllCategories() {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.get(
+      authapi + "Categories/GetAllCategories",
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't get data : " + error);
+  }
+}
+
+export async function CreateCategory(obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.post(
+      authapi + "Categories/CreateCategory",
+      obj,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't add object : " + error);
+    return [];
+  }
+}
+
+export async function UpdateCategory(Id, obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.put(
+      authapi + "Categories/UpdateCategory/" + Id,
+      obj,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't update object : " + error);
+    return [];
+  }
+}
+
+export async function DeleteCategory(Id) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.delete(
+      authapi + "Categories/DeleteCategory/" + Id,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't delete object : " + error);
+    return [];
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Plans
+export async function GetAllPlans() {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.get(authapi + "Plans/GetAllPlans", config);
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't get data : " + error);
+  }
+}
+
+export async function CreatePlan(obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.post(authapi + "Plans/CreatePlan", obj, config);
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't add object : " + error);
+    return [];
+  }
+}
+
+export async function UpdatePlan(Id, obj) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.put(
+      authapi + "Plans/UpdatePlan/" + Id,
+      obj,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't update object : " + error);
+    return [];
+  }
+}
+
+export async function DeletePlan(Id) {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = await axios.delete(
+      authapi + "Plans/DeletePlan/" + Id,
+      config
+    );
+    //console.log(promise);
+    return promise;
+  } catch (error) {
+    console.error("can't delete object : " + error);
+    return [];
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////

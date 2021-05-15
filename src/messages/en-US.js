@@ -71,7 +71,7 @@ export const enMessages = {
     teachers: "Teachers",
     students: "Students",
     grades: "Grades",
-    plans: "plans",
+    plans: "Plans",
     courses: "Courses",
     users: "Users",
     tenants: "Tenants",
