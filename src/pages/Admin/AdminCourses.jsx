@@ -187,6 +187,8 @@ class AdminCourses extends React.Component {
             />
             <Column field="courseName" title="Course Name" />
             <Column field="grade.gradeName" title="Grade" />
+            <Column field="teachersCoursesCount" title="# Teachers" />
+            <Column field="studentsCoursesCount" title="# Students" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}

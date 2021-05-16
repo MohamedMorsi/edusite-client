@@ -200,7 +200,9 @@ class AdminGrades extends React.Component {
               filterable={false}
             />
             <Column field="gradeName" title="Grade Name" />
-            <Column field="coursesCount" title="Courses count" />
+            <Column field="coursesCount" title="# Courses" />
+            <Column field="teachersGradesCount" title="# Teachers" />
+            <Column field="studentsCount" title="# Students" />
             <Column
               title="Is Active"
               cell={this.ActionopenCloseCommandCell}
